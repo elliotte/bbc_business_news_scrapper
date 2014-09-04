@@ -2,20 +2,20 @@ require 'sinatra/base'
 require 'capybara'
 require 'capybara/poltergeist'
 require 'json'
-require 'sinatra/cross_origin'
+#require 'sinatra/cross_origin'
 
 class MoneaFood < Sinatra::Base
 
-configure do
-  enable :cross_origin
-end
+# configure do
+#   enable :cross_origin
+# end
 
 set :views, File.join(File.dirname(__FILE__), '..', 'views')
 set :public_folder, File.join(File.dirname(__FILE__), '..', 'public')
 set :partial_template_engine, :erb
 
-set :allow_origin, :any
-set :allow_methods, [:get]
+# set :allow_origin, :any
+# set :allow_methods, [:get]
 # set :allow_credentials, true
 # set :max_age, "1728000"
 # set :expose_headers, ['Content-Type']
