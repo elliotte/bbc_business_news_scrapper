@@ -10,6 +10,17 @@ class MoneaFood < Sinatra::Base
 #   enable :cross_origin
 # end
 
+before do
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Origin, X-Requested-With, Content-Type, Accept"
+    response.headers["Access-Control-Allow-Methods"] = "*"
+    if params[:locale]
+      I18n.locale = params[:locale].to_sym 
+    end
+end
+
+set :protection, false
+
 set :views, File.join(File.dirname(__FILE__), '..', 'views')
 set :public_folder, File.join(File.dirname(__FILE__), '..', 'public')
 set :partial_template_engine, :erb
@@ -22,6 +33,8 @@ set :partial_template_engine, :erb
 # set :allow_headers, ["*", "Content-Type", "Accept", "AUTHORIZATION", "Cache-Control"]
 
   get '/' do
+
+
 
     content_type :json
     urls = []
